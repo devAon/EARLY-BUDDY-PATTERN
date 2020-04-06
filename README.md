@@ -36,7 +36,7 @@
 
   이러한 라이브러리의 모음은 MVVM 패턴의 구조의 설계에 최적화되어 있다.
 
-![image-20200406170208387](C:\Users\choiyewon\AppData\Roaming\Typora\typora-user-images\image-20200406170208387.png)
+![](https://k.kakaocdn.net/dn/3rGPS/btqDdIvdFVu/LUxxbjFJwGtylYd04OruS0/img.png)
 
 
 
@@ -183,8 +183,8 @@ LiveData (=Observable 패턴) 을 이용해 DB를 관찰하고 자동으로 UI�
 ![img](https://k.kakaocdn.net/dn/dedE2h/btqCNaeBOQV/NH166UH3Rk2fk8x2GEQcOk/img.png)
 
 
+![](https://k.kakaocdn.net/dn/QFkW2/btqDcdvUPZ2/rYWkqu1Wt1A4K8GEB0dFWk/img.png)
 
-![image-20200406182920710](C:\Users\choiyewon\AppData\Roaming\Typora\typora-user-images\image-20200406182920710.png)
 
 
 
