@@ -1,5 +1,8 @@
 
 
+[aonee 찰나의 개발흔적 포스팅](https://aonee.tistory.com/entry/Android-ACC-MVVM%ED%8C%A8%ED%84%B4-Repository-LiveData-DataBinding-%EA%B3%B5%EB%B6%80-%ED%9B%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0, "aonee 찰나의 개발흔적 티스토리 포스팅")
+      
+
 ### 🔥목차🔥
 
 #### 🍓 안드로이드 아키텍처 컴포넌트 (AAC)
