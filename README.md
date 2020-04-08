@@ -1,6 +1,8 @@
 
 
-👉👉👉 [aonee 찰나의 개발흔적 포스팅 - [Android] ACC, MVVM패턴, Repository, LiveData, DataBinding 프로젝트에 적용](https://aonee.tistory.com/entry/Android-ACC-MVVM%ED%8C%A8%ED%84%B4-Repository-LiveData-DataBinding-%EA%B3%B5%EB%B6%80-%ED%9B%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0, "aonee 찰나의 개발흔적 티스토리 포스팅")
+👉👉👉 [aonee 찰나의 개발흔적 포스팅 - [Android] MVVM 패턴 적용해보며 배우기(1) - ACC, MVC와 MVVM비교, MVVM 장점](https://aonee.tistory.com/entry/Android-ACC-MVVM%ED%8C%A8%ED%84%B4-Repository-LiveData-DataBinding-%EA%B3%B5%EB%B6%80-%ED%9B%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0, "aonee 찰나의 개발흔적 티스토리 포스팅")
+  
+👉👉👉 [aonee 찰나의 개발흔적 포스팅 - [Android] MVVM 패턴 적용해보며 배우기(2) - RxJava2](https://aonee.tistory.com/entry/Android-ACC-MVVM%ED%8C%A8%ED%84%B4-Repository-LiveData-DataBinding-%EA%B3%B5%EB%B6%80-%ED%9B%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0, "aonee 찰나의 개발흔적 티스토리 포스팅")
       
 
 ### 🔥목차🔥
@@ -486,4 +488,244 @@ class CookiesIntercepter : Interceptor {
     }
 }
 ```
+  
+  
+  
+ 
+ 
+  
+   
+    
+      
+       
+       
+       
+       
+       
+       
+       
+       
+### 🔥목차🔥
 
+#### 🍓 RxJava 란?
+
+#### 🍓 RxJava 장점
+
+#### 🍓 **Observable과 Observer**
+
+#### 🍓 **Scheduler**
+
+#### 🍓 Disposable
+
+#### 🐥 실습 - RxJava2 적용
+
+👉 [\[Android\] MVVM 패턴 적용해보며 배우기(1) - ACC, MVC와 MVVM비교, MVVM 장점](https://aonee.tistory.com/entry/Android-ACC-MVVM%ED%8C%A8%ED%84%B4-Repository-LiveData-DataBinding-%EA%B3%B5%EB%B6%80-%ED%9B%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%97%90-%EC%A0%81%EC%9A%A9%ED%95%B4%EB%B3%B4%EA%B8%B0, "[Android] MVVM 패턴 적용해보며 배우기(1) - ACC, MVC와 MVVM비교, MVVM 장점")
+
+RxJava개념 정리 및 실습에 많은 도움이 됐던 시연이 포스팅 !!
+
+시연이 덕분에 쉽게 RxJava에 대해 공부할 수 있었다.
+
+시연이 포스팅을 참고해 RxJava에 대해 재정리 해봤다.
+
+👉 시스토리 - [안드로이드 프로젝트에 RxJava 적용하기](https://ssionii.tistory.com/7) GOOD 😘 여기에 더 자세히 정리되어있다 !
+
+## RxJava 란?
+
+-   Reactive Extensions
+    
+-   비동기 이벤트 기반 프로그래밍 라이브러리
+    
+-   매 이벤트마다 그에 대응하는 동작을 정의하는 기존의 이벤트 처리 방식인 콜백 방식과 달리
+    
+    \*_발생하는 이벤트를 이벤트 스트림에 전달하고, \*_
+    
+    **이벤트 스트림을 관찰하다가 원하는 이벤트를 감지하면 이에 따른 동작을 수행**하는 방식
+    
+
+## RxJava 장점
+
+-   비동기 이벤트를 매우 쉽게 처리 가능
+    
+-   이벤트나 데이터를 쉽게 가공 및 분배 가능
+    
+
+**Observable과 Observer**
+
+-   **옵서버블(Observable) ?**
+    
+    -   \_이벤트를 만들어내는(emit) 주체\_로, 이벤트 스트림을 통해 만든 이벤트를 내보낸다.
+-   **옵서버(Observer) ?**
+    
+    옵서버블에서 만들어진 \_이벤트에 반응(react)\_하며, 이벤트를 받았을 때 수행할 작업을 정의한다.
+    
+    이때, 옵서버가 옵서버블에서 만들어진 이벤트에 반응하려면
+    
+    옵서버블에서 발생하는 이벤트를 옵서버가 관찰해야하는데,
+    
+    이를 '옵서버가 옵서버블을 구독(subscribe)한다'라고 표현한다.
+    
+
+**Scheduler**
+
+-   작업을 수행할 스레드(thread)를 지정한다.
+    
+-   스케쥴러는 observerOn() 메소드를 사용하여 지정하며,
+    
+    이 메소드를 호출한 직후에 오는 연산자나 옵서버에서 수행되는 작업이
+    
+    앞의 observerOn() 메소드에서 지정한 스레드에서 실행된다.
+    
+
+**Disposable**
+
+-   옵서버가 옵서버블을 구독할 때 생성되는 객체로,
+    
+    옵서버블에서 만드는 이벤트 스트림과 이에 필요한 리소스를 관리한다.
+    
+-   옵서버블로부터 더 이상 이벤트를 받지 않으려면 디스포저블을 통해 구독 해제(unsubscribe)를 할 수 있다.
+    
+    옵서버블은 이를 감지해 자신을 구독하고 있는 옵서버가 더 이상 없는 경우 이벤트를 만들기 위해 유지하고 있던 리소스(ex: 뷰에 대한 참조 등)을 해제한다.
+    
+
+**🐥 실습 - RxJava2 적용**
+
+Retrofit을 통해 받는 HTTP 응답을 Observable 형태로 받도록 수정
+
+#### 1) **build.gradle (Module.app)** 에 아래 코드를 추가
+
+```
+implementation "com.squareup.retrofit2:adapter-rxjava2:2.5.0"
+    // RxAndroid와 RxJava 라이브러리를 추가
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.3'
+```
+
+#### **2) 데이터 처리부 수정**
+
+**AndBuddyService.kt**
+
+Call -> Observable 로 수정
+
+```
+interface AndBuddyService {
+    @POST("/users/signup")
+    fun postSignupUser(
+        @Body() body: JsonObject
+    ): Observable<PostSignupData>
+}
+```
+
+**AndBuddyServiceImpl.kt**
+
+.addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync()) 추가
+
+```
+object AndBuddyServiceImpl {
+    private const val BASE_URL = "http://15.164.70.24:3456/"
+
+    private val okHttpClient: OkHttpClient =
+        OkHttpClient.Builder().addInterceptor(CookiesIntercepter())
+            .addNetworkInterceptor(CookiesIntercepter()).build()
+
+    private val retrofit: Retrofit =
+        Retrofit.Builder().baseUrl(BASE_URL).client(
+            okHttpClient
+        )
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+    val service: AndBuddyService = retrofit.create(
+        AndBuddyService::class.java)
+}
+```
+
+#### 3) 통신하는 부분 수정
+
+옵서버블을 사용하여 API 호출 결과를 받을 것이기 때문에 Call 객체를 디스포저블 객체로 수정해야한다.
+
+##### **data 부분**
+
+-   RemoteDataSource.kt
+
+```
+interface RemoteDataSource { 
+    fun signUp(jsonObject: JsonObject) : Observable<PostSignupData>
+}
+```
+
+-   RetmoteDataSourceImpl.kt
+
+```
+class RemoteDataSourceImpl : RemoteDataSource { 
+   val api = AndBuddyServiceImpl.service
+
+   override fun signUp(body: JsonObject) = api.postSignupUser(body).map{it}
+}
+```
+
+-   SignupRepository.kt
+
+```
+class SignupRepository{
+    val signupRemoteDataSource: RemoteDataSource = RemoteDataSourceImpl() //인스턴스 생성
+
+    fun signUp( body: JsonObject ) : Observable<PostSignupData> =
+        signupRemoteDataSource.signUp(body)
+}
+```
+
+**UI 부분**
+
+-   SignupViewModel.kt
+
+```
+class SignupViewModel : ViewModel() {
+    val signupRepository = SignupRepository()
+
+    internal val disposables = CompositeDisposable()
+
+    val isSuccessNetwork = MutableLiveData<Boolean>()
+    val wifiDisconnect = MutableLiveData<Unit>()
+
+    fun viewCommunicate(body: JsonObject) {
+        disposables.add(signupRepository.signUp(body)
+            .observeOn(AndroidSchedulers.mainThread())
+            // 구독할 때 수행할 작업을 구현
+            .doOnSubscribe {}
+            // 스트림이 종료될 때 수행할 작업을 구현
+            .doOnTerminate {}
+            // 옵서버블을 구독
+            .subscribe({
+                // API를 통해 액세스 토큰을 정상적으로 받았을 때 처리할 작업을 구현
+                // 작업 중 오류가 발생하면 이 블록은 호출되지 x
+
+                // onResponse
+
+                //if (it.isSuccessful){
+                    isSuccessNetwork.value = true
+
+                /*}else{ //아이디 중복
+                    isSuccessNetwork.value = false
+
+                    Log.d("test",  "아이디중복: " + it.message())
+                }*/
+
+            }) {
+                // 에러 블록
+                // 네트워크 오류나 데이터 처리 오류 등
+                // 작업이 정상적으로 완료되지 않았을 때 호출
+
+
+                // onFailure
+                Log.d("test",  "통신 실패 error : " + it.toString())
+                wifiDisconnect.value = Unit
+            })
+    }
+
+    override fun onCleared() {
+        disposables.clear()
+        super.onCleared()
+    }
+}
+```
