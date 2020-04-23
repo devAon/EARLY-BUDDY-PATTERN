@@ -12,8 +12,8 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.devaon.andbuddy.R
-import com.devaon.andbuddy.data.repository.SignupRepository
 import com.devaon.andbuddy.databinding.ActivitySignupBinding
+import com.devaon.andbuddy.feature.placefavorite.PlaceFavoriteActivity
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -54,14 +54,14 @@ class SignupActivity : AppCompatActivity() {
 
 
             if (id.isEmpty() || pw.isEmpty()) {
-                act_signup_cl_join.setBackgroundResource(R.drawable.act_signup_round_rect_gray_full)
+                act_signup_cl_join.setBackgroundResource(R.drawable.round_rect_gray_full)
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             } else {
                     Log.d("test", "makeController id : " + id)
                     Log.d("test", "makeController pw : " + pw)
                     click()
-                    act_signup_cl_join.setBackgroundResource(R.drawable.act_signup_round_rect_blue_full)
+                    act_signup_cl_join.setBackgroundResource(R.drawable.round_rect_blue_full)
                 }
             }
 
@@ -81,7 +81,7 @@ class SignupActivity : AppCompatActivity() {
                 id = act_signup_et_id.text.toString()
 
                 if (p0!!.length > 0) {
-                    act_signup_cl_id.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
+                    act_signup_cl_id.setBackgroundResource(R.drawable.round_rect_blue)
                     act_signup_et_id.setTextColor(
                         ContextCompat.getColor(
                             this@SignupActivity,
@@ -92,8 +92,8 @@ class SignupActivity : AppCompatActivity() {
 
 
                 } else {
-                    act_signup_cl_join.setBackgroundResource(R.drawable.act_signup_round_rect_gray_full)
-                    act_signup_cl_id.setBackgroundResource(R.drawable.act_signup_round_rect_gray)
+                    act_signup_cl_join.setBackgroundResource(R.drawable.round_rect_gray_full)
+                    act_signup_cl_id.setBackgroundResource(R.drawable.round_rect_gray)
                     act_signup_et_id.setTextColor(
                         ContextCompat.getColor(
                             this@SignupActivity,
@@ -120,7 +120,7 @@ class SignupActivity : AppCompatActivity() {
                 pw = act_signup_et_pw.text.toString()
 
                 if (p0!!.length > 0) {
-                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_blue)
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.round_rect_blue)
                     act_signup_et_pw.setTextColor(
                         ContextCompat.getColor(
                             this@SignupActivity,
@@ -130,7 +130,7 @@ class SignupActivity : AppCompatActivity() {
                     Log.d("test", "postUserData pw : " + pw)
 
                 } else {
-                    act_signup_cl_pw.setBackgroundResource(R.drawable.act_signup_round_rect_red)
+                    act_signup_cl_pw.setBackgroundResource(R.drawable.round_rect_red)
                     act_signup_et_pw.setTextColor(
                         ContextCompat.getColor(
                             this@SignupActivity,
@@ -153,27 +153,6 @@ class SignupActivity : AppCompatActivity() {
 
         val body = JsonParser().parse(jsonObject.toString()) as JsonObject
         vm.viewCommunicate(body)
-
-
-        /*val signUpRepository = SignupRepository()
-
-    val body = JsonParser().parse(jsonObject.toString()) as JsonObject
-    Log.d("test", "postUserData body : " + body)
-
-    signUpRepository.signUp(jsonObject = body,
-        onResponse = { //고차함수로 구현, it으로 response에 바로 접근 가능
-            if (it.isSuccessful){
-                val intent = Intent(this@SignupActivity, SignupSuccessActivity::class.java)
-                ContextCompat.startActivity(intent)
-            }else
-                Log.d("test",  "postUserData 응답 실패 : " + it.message())
-        }, onFailure = { //고차함수로 구현, it으로 t에 바로 접근 가능
-
-            Log.d("test",  "통신 실패 error : " + it.toString())
-            val intent = Intent(this@SignupActivity, SignupFailActivity::class.java)
-            ContextCompat.startActivity(intent)
-        }
-    )*/
 
 
     }
@@ -201,7 +180,7 @@ class SignupActivity : AppCompatActivity() {
         vm.isSuccessNetwork.observe(
             this, Observer {
                 if(it){
-                    val intent = Intent(this@SignupActivity, SignupSuccessActivity::class.java)
+                    val intent = Intent(this@SignupActivity, PlaceFavoriteActivity::class.java)
                     startActivity(intent)
                 }else{
                     idDuplicate()

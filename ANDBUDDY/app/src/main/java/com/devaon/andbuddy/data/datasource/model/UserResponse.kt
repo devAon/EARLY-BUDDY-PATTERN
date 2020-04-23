@@ -2,11 +2,11 @@ package com.devaon.andbuddy.data.datasource.model
 
 import com.google.gson.annotations.SerializedName
 
-data class PostSignupData (
+data class UserResponse (
     @SerializedName("status")
-    val status: Int,
-    @SerializedName("data")
-    val idx: Int,
+    val status: Boolean,
     @SerializedName("message")
-    val message: String
+    val message: String,
+    @SerializedName("data")
+    val idx: Int
 )
